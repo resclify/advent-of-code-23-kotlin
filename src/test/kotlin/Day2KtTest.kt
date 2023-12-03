@@ -15,7 +15,7 @@ class Day2KtTest {
 
     @Test
     fun realInput() {
-        val input = File("src/test/resources/input_day2.txt").readText().split("\n")
+        val input = File("src/test/resources/input_day2.txt").readLines()
         val output = day2Part1(input)
         println(output)
     }
@@ -36,7 +36,7 @@ class Day2KtTest {
 
     @Test
     fun realInput2() {
-        val input = File("src/test/resources/input_day2.txt").readText().split("\n")
+        val input = File("src/test/resources/input_day2.txt").readLines()
         val output = day2Part2(input)
         println(output)
     }

@@ -4,12 +4,12 @@ fun day1Part1(input: List<String>): Int {
     }
 }
 
-fun String.findFirstDigit(stringToDigit: Map<String, Int>): Int {
+private fun String.findFirstDigit(stringToDigit: Map<String, Int>): Int {
     val searchResult = this.findAnyOf(stringToDigit.keys)
     return stringToDigit[searchResult?.second] ?: error("")
 }
 
-fun String.findLastDigit(stringToDigit: Map<String, Int>): Int {
+private fun String.findLastDigit(stringToDigit: Map<String, Int>): Int {
     val searchResult = this.findLastAnyOf(stringToDigit.keys)
     return stringToDigit[searchResult?.second] ?: error("")
 }
