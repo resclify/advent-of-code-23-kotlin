@@ -22,6 +22,15 @@ private fun getElementMapping(elementString: String): List<Mapping> {
     }
 }
 
+private fun getElementReversedMapping(elementString: String): List<Mapping> {
+    return elementString.lines().drop(1).map {
+        val rawValues = it.split(" ").map { e -> e.toLong() }
+        Mapping(
+            sourceRange = LongRange(rawValues[0], rawValues[0] + rawValues[2]), offset = rawValues[1] - rawValues[0]
+        )
+    }
+}
+
 fun day5Part1(input: List<String>): Long {
     val seeds = input[0].substringAfter("seeds: ").split(" ").map { it.toLong() }
 
@@ -63,4 +72,22 @@ fun day5Part2Concurrent(input: List<String>): Long {
         }
     }
 }
+
+fun day5Part2Reversed(input: List<String>): Long {
+    val seeds = input[0].substringAfter("seeds: ").split(" ").map { it.toLong() }.chunked(2)
+        .map { LongRange(it.first(), it.first() + it.last()) }
+
+    val inputElements = input.joinToString(separator = "\n").split("\n\n")
+    val allReversedMapping = inputElements.drop(1).map { getElementReversedMapping(it) }.reversed()
+
+    var location = 0L
+    while (true) {
+        val seed = location.mapToAll(allReversedMapping)
+        if (seeds.any { seed in it })
+            return location
+        location++
+    }
+}
+
+
 
