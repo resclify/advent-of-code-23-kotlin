@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.io.File
 
-class day8KtTest {
+class Day8KtTest {
     @Test
     fun descriptionInput() {
         val input = "RL\n" +
